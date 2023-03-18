@@ -7,16 +7,27 @@ import { navbarHeight } from "./constants.ts";
 import type { INavItem } from "./NavItem.tsx";
 import type { Props as SearchbarProps } from "$store/components/search/Searchbar.tsx";
 import HeaderSearchMenu from "$store/islands/HeaderSearchMenu.tsx";
+import { useSignal } from "@preact/signals";
+import { useEffect } from "preact/hooks";
 
 function Navbar({ items, searchbar }: {
   items: INavItem[];
   searchbar: SearchbarProps;
 }) {
+  const isOpen = useSignal(true);
+
+  useEffect(() => {
+    window.document.addEventListener("scroll", () => {
+      isOpen.value = false;
+    });
+  }, []);
+
   return (
     <>
       {/* Mobile Version */}
       <div
         class={`md:hidden flex flex-row justify-between items-center h-[${navbarHeight}] border-b-1 border-default w-full px-2 gap-2`}
+        id="header-page"
       >
         <HeaderButton variant="menu" />
 
@@ -35,14 +46,36 @@ function Navbar({ items, searchbar }: {
       </div>
 
       {/* Desktop Version */}
+      <div className="flex justify-center">
+        <div class="">
+          {isOpen.value && (
+            <a
+              href="/"
+              aria-label="Store logo"
+              class="block py-1 py-3 w-[176px]"
+            >
+              <img
+                src="https://www.kipling.com.br/arquivos/kipling.png?v=636866750618500000"
+                alt="store logo image"
+              />
+            </a>
+          )}
+        </div>
+      </div>
       <div class="hidden md:flex flex-row justify-between items-center border-b-1 border-default w-full pl-2 pr-3">
         <div class="flex-none w-44">
-          <a href="/" aria-label="Store logo" class="block py-1 py-3 w-[176px]">
-            <img
-              src="https://www.kipling.com.br/arquivos/kipling.png?v=636866750618500000"
-              alt="store logo image"
-            />
-          </a>
+          {!isOpen.value && (
+            <a
+              href="/"
+              aria-label="Store logo"
+              class="block py-1 py-3 w-[176px]"
+            >
+              <img
+                src="https://www.kipling.com.br/arquivos/kipling.png?v=636866750618500000"
+                alt="store logo image"
+              />
+            </a>
+          )}
         </div>
         <div class="flex-auto flex justify-center">
           {items.map((item) => <NavItem item={item} />)}

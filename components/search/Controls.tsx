@@ -21,30 +21,34 @@ function Controls({ page }: { page: ProductListingPage }) {
   const filters = page?.filters;
 
   return (
-    <Container class="flex flex-col justify-between mb-4 md:mb-0 p-4 md:p-0 sm:gap-4 sm:flex-row sm:h-[53px] md:border-b-1">
-      <div class="flex flex-row sm:gap-4 items-center justify-between border-b-1 border-default md:border-none">
-        <Button
-          variant="tertiary"
-          onClick={() => {
-            open.value = true;
-          }}
-        >
-          Filtrar
-          <Icon id="FilterList" width={16} height={16} />
-        </Button>
+    <Container class="flex flex-col justify-end mb-4 md:mb-0 p-4 md:p-0 sm:gap-4 sm:flex-row sm:h-[53px] md:border-b-1">
+      <div class="flex flex-row sm:gap-4 items-center justify-between md:justify-end border-b-1 border-default md:border-none">
+        <div className="md:hidden">
+          <Button
+            variant="tertiary"
+            onClick={() => {
+              open.value = true;
+            }}
+          >
+            Filtrar
+            <Icon id="FilterList" width={16} height={16} />
+          </Button>
+        </div>
         <Sort />
       </div>
 
-      <Modal
-        title="Filtrar"
-        mode="sidebar-right"
-        open={open.value}
-        onClose={() => {
-          open.value = false;
-        }}
-      >
-        <Filters filters={filters} />
-      </Modal>
+      <div className="md:hidden">
+        <Modal
+          title="Filtrar"
+          mode="sidebar-right"
+          open={open.value}
+          onClose={() => {
+            open.value = false;
+          }}
+        >
+          <Filters filters={filters} />
+        </Modal>
+      </div>
     </Container>
   );
 }
