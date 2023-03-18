@@ -16,20 +16,22 @@ function Alert({ alerts = [], interval = 5 }: Props) {
   const id = useId();
 
   return (
-    <div id={id}>
-      <Slider class="gap-6 scrollbar-none">
-        {alerts.map((alert) => (
-          <Text
-            class="flex justify-center items-center w-screen h-[38px]"
-            variant="caption"
-            tone="default"
-          >
-            {alert}
-          </Text>
-        ))}
-      </Slider>
+    <div id="alert-top-page">
+      <div id={id}>
+        <Slider class="gap-6 scrollbar-none">
+          {alerts.map((alert) => (
+            <Text
+              className="flex justify-center items-center w-screen h-[38px] text-gray-600 uppercase"
+              variant="caption"
+              tone="default"
+            >
+              {alert}
+            </Text>
+          ))}
+        </Slider>
 
-      <SliderControllerJS rootId={id} interval={interval && interval * 1e3} />
+        <SliderControllerJS rootId={id} interval={interval && interval * 1e3} />
+      </div>
     </div>
   );
 }

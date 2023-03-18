@@ -6,6 +6,7 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import { formatPrice } from "$store/sdk/format.ts";
 import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 import type { Product } from "deco-sites/std/commerce/types.ts";
+import { useSignal } from "@preact/signals";
 
 /**
  * A simple, inplace sku selector to be displayed once the user hovers the product card
@@ -48,21 +49,24 @@ function ProductCard({ product, preload }: Props) {
     image: images,
     offers,
   } = product;
+
   const [front, back] = images ?? [];
-  const { listPrice, price, seller } = useOffer(offers);
+  const { listPrice, price, seller, installments } = useOffer(offers);
+  const discount = price && listPrice ?  Math.ceil(100-((price*100)/listPrice)) : 0
+
 
   return (
     <div
       id={`product-card-${productID}`}
-      class="w-full group"
+      class="w-full group bg-white relative hover:scale-110"
     >
       <a href={url} aria-label="product link">
         <div class="relative w-full">
           <Image
             src={front.url!}
             alt={front.alternateName}
-            width={200}
-            height={279}
+            width={247}
+            height={247}
             class="rounded w-full group-hover:hidden"
             preload={preload}
             loading={preload ? "eager" : "lazy"}
@@ -71,8 +75,8 @@ function ProductCard({ product, preload }: Props) {
           <Image
             src={back?.url ?? front.url!}
             alt={back?.alternateName ?? front.alternateName}
-            width={200}
-            height={279}
+            width={247}
+            height={247}
             class="rounded w-full hidden group-hover:block"
             sizes="(max-width: 640px) 50vw, 20vw"
           />
@@ -85,32 +89,35 @@ function ProductCard({ product, preload }: Props) {
               }}
             >
               <Sizes {...product} />
-              <Button as="a" href={product.url}>Visualizar Produto</Button>
             </div>
           )}
         </div>
 
         <div class="flex flex-col gap-1 py-2">
           <Text
-            class="overflow-hidden overflow-ellipsis whitespace-nowrap"
-            variant="caption"
+            class="overflow-hidden overflow-ellipsis whitespace-nowrap text-center text-lg"
+            variant="body"
           >
             {name}
           </Text>
-          <div class="flex items-center gap-2">
+          <div class="flex flex-col items-center gap-2">
             <Text
-              class="line-through"
-              variant="list-price"
+              className="line-through text-xs"
               tone="subdued"
             >
               {formatPrice(listPrice, offers!.priceCurrency!)}
             </Text>
-            <Text variant="caption" tone="price">
+            <Text variant="body" className="text-red-600 text-lg" tone="price">
               {formatPrice(price, offers!.priceCurrency!)}
+            </Text>
+            <Text variant="body" tone="price" className="text-sm text-red-400">
+              Ou 6x de {formatPrice(price/6, offers!.priceCurrency!)}
             </Text>
           </div>
         </div>
       </a>
+      { !!discount && <p className="bg-gray-100 text-red-600 font-thin px-3 py-1 absolute top-[8px] left-0">-{ discount }%</p> }
+      { !!discount && <p className="bg-red-600 text-white font-thin px-3 py-1 absolute top-[44px] left-0">SALE</p> }
     </div>
   );
 }

@@ -11,6 +11,7 @@ import type {
 import Breadcrumb from "../ui/Breadcrumb.tsx";
 import SearchControls from "../search/Controls.tsx";
 import Filters from "../search/Filters.tsx";
+import PageTitle from "../ui/PageTitle.tsx";
 
 export interface Props {
   page: LoaderReturnType<ProductListingPage | null>;
@@ -26,7 +27,7 @@ function NotFound() {
 
 function Gallery({ page }: { page: ProductListingPage }) {
   return (
-    <Container class="px-4 sm:py-10">
+    <Container class="px-4 sm:py-10 bg-[#F1F2F1]">
       <div class="relative grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-10 items-center">
         {page.products?.map((product, index) => (
           <div class="w-full list-none">
@@ -56,16 +57,14 @@ function Gallery({ page }: { page: ProductListingPage }) {
 
 function TopBanner({ breadcrumb }: { breadcrumb: BreadcrumbList }) {
   return (
-    <div className="w-full h-200 bg-gray-400 px-3 py-4 h-[167px]">
+    <div className="w-full h-200 bg-[#929097] px-3 py-4 h-[167px]">
       <div className="text-white">
         <Breadcrumb
           itemListElement={breadcrumb?.itemListElement}
           color="#FFF"
         />
       </div>
-      <div>
-        <h1 className="text-4xl text-white text-thin">Titulo da página</h1>
-      </div>
+      <PageTitle/>
     </div>
   );
 }
@@ -91,7 +90,7 @@ function ControllerListPage({ filters }: { filters: any }) {
   );
 }
 
-function ProductGallery({ page, Filtercolors }: Props) {
+function ProductGallery({ page }: Props) {
   if (!page) {
     return <NotFound />;
   }
