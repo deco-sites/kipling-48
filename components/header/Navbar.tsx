@@ -37,29 +37,37 @@ function Navbar({ items, searchbar }: {
       {/* Desktop Version */}
       <div class="hidden md:flex flex-row justify-between items-center border-b-1 border-default w-full pl-2 pr-3">
         <div class="flex-none w-44">
-          <a href="/" aria-label="Store logo" class="block px-4 py-3 w-[160px]">
-            <Icon id="Logo" width={126} height={16} />
+          <a href="/" aria-label="Store logo" class="block py-1 py-3 w-[176px]">
+            <img
+              src="https://www.kipling.com.br/arquivos/kipling.png?v=636866750618500000"
+              alt="store logo image"
+            />
           </a>
         </div>
         <div class="flex-auto flex justify-center">
           {items.map((item) => <NavItem item={item} />)}
         </div>
-        <div class="flex-none w-44 flex items-center justify-end gap-2">
+        <div class="flex-none w-44 md:w-48 flex items-center justify-end gap-2">
+          <Divider />
           <HeaderButton variant="search" />
+          <Divider />
           <HeaderSearchMenu searchbar={searchbar} />
-          <Button
-            as="a"
-            variant="icon"
-            href="/login"
-            aria-label="Log in"
-          >
-            <Icon id="User" width={20} height={20} strokeWidth={0.4} />
-          </Button>
+          <a href="/minha-conta" className="text-xs">Minha Conta</a>
+          <Divider />
+
           <HeaderButton variant="cart" />
         </div>
       </div>
     </>
   );
 }
+
+const Divider = () => {
+  return (
+    <div
+      class={`bg-black w-[1px] h-[32px]`}
+    />
+  );
+};
 
 export default Navbar;

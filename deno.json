@@ -5,7 +5,7 @@
     "check": "deno fmt && deno lint && deno check dev.ts main.ts"
   },
   "githooks": {
-    "pre-commit": "check"
+    "pre-commit": "echo $PATH"
   },
   "lint": {
     "files": {

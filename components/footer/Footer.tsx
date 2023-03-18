@@ -1,14 +1,20 @@
 import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
 import Text from "$store/components/ui/Text.tsx";
 import Container from "$store/components/ui/Container.tsx";
-
-import Newsletter from "./Newsletter.tsx";
+import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import type { ComponentChildren } from "preact";
+import Newsletter from "../ui/Newsletter.tsx";
 
 export type IconItem = { icon: AvailableIcons };
 export type StringItem = {
   label: string;
   href: string;
+};
+export type Certificate = {
+  src: LiveImage;
+  cols: number;
+  alt: string;
+  title: string;
 };
 
 export type Item = StringItem | IconItem;
@@ -24,7 +30,7 @@ const isIcon = (item: Item): item is IconItem =>
 
 function SectionItem({ item }: { item: Item }) {
   return (
-    <Text variant="caption" tone="default-inverse">
+    <Text variant="caption" tone="default">
       {isIcon(item)
         ? (
           <div class="border-default border-1 py-1.5 px-2.5">
@@ -56,24 +62,25 @@ function FooterContainer(
 
 export interface Props {
   sections?: Section[];
+  certificates: Certificate[];
 }
 
-function Footer({ sections = [] }: Props) {
+function Footer({ sections = [], certificates = [] }: Props) {
   return (
     <footer class="w-full bg-footer flex flex-col divide-y-1 divide-default">
       <div>
         <Container class="w-full flex flex-col divide-y-1 divide-default">
-          <FooterContainer>
-            <Newsletter />
-          </FooterContainer>
-
           <FooterContainer>
             {/* Desktop view */}
             <ul class="hidden sm:flex flex-row gap-20">
               {sections.map((section) => (
                 <li>
                   <div>
-                    <Text variant="heading-3" tone="default-inverse">
+                    <Text
+                      variant="heading-3"
+                      className="font-bold uppercase"
+                      tone="default"
+                    >
                       {section.label}
                     </Text>
 
@@ -91,6 +98,29 @@ function Footer({ sections = [] }: Props) {
                   </div>
                 </li>
               ))}
+              <li>
+                <div>
+                  <div className="grid grid-cols-2 gap-4">
+                    {certificates.map(({ src, alt, title, cols = 1 }) => (
+                      <div className={`col-span-${cols}`} title={title}>
+                        <img
+                          className="max-w-[200px]"
+                          src={src}
+                          alt={alt}
+                          title={title}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </li>
+              <Newsletter
+                action="TESTE"
+                placeholder="E-Mail"
+                subtitle="Subtitulo"
+                title="Newsletter"
+                className="bg-stone-800"
+              />
             </ul>
 
             {/* Mobile view */}
@@ -125,16 +155,16 @@ function Footer({ sections = [] }: Props) {
 
       <div>
         <Container class="w-full">
-          <FooterContainer class="flex justify-between w-full">
+          <FooterContainer class="flex justify-between w-full text-green-600">
             <Text
-              class="flex items-center gap-1"
+              class="flex items-center gap-1 text-green-600"
               variant="body"
-              tone="default-inverse"
             >
               Powered by{" "}
               <a
                 href="https://www.deco.cx"
                 aria-label="powered by https://www.deco.cx"
+                className="text-green-600"
               >
                 <Icon id="Deco" height={20} width={60} strokeWidth={0.01} />
               </a>
@@ -148,29 +178,10 @@ function Footer({ sections = [] }: Props) {
                   rel="noopener noreferrer"
                   aria-label="Instagram logo"
                 >
-                  <Icon
-                    class="text-default-inverse"
-                    width={32}
-                    height={32}
-                    id="Instagram"
-                    strokeWidth={1}
-                  />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://www.deco.cx/discord"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Discord logo"
-                >
-                  <Icon
-                    class="text-default-inverse"
-                    width={32}
-                    height={32}
-                    id="Discord"
-                    strokeWidth={5}
-                  />
+                  Time{" "}
+                  <b className="p-1 border border-green-700 bg-green-600 text-white">
+                    48
+                  </b>
                 </a>
               </li>
             </ul>

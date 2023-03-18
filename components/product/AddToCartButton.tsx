@@ -13,7 +13,15 @@ function AddToCartButton({ skuId, sellerId }: Props) {
   });
 
   return (
-    <Button {...props} class="w-full" style={{background: "#88b04b", textTransform: "uppercase", color: "white"}}>
+    <Button
+      {...props}
+      class="w-full"
+      style={{
+        background: "#88b04b",
+        textTransform: "uppercase",
+        color: "white",
+      }}
+    >
       Adicionar ao carrinho
     </Button>
   );

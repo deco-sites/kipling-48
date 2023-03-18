@@ -16,7 +16,7 @@ function NavItem({ item }: { item: INavItem }) {
     <li class="group flex items-center">
       <a href={href} class="px-4 py-3">
         <Text
-          class="group-hover:border-black border-solid border-b border-white"
+          class="group-hover:border-black border-solid border-b border-white text-sm"
           variant="menu"
         >
           {label}

@@ -28,11 +28,30 @@ function ProductShelf({
   return (
     <Container
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] grid-rows-[48px_1fr_48px_1fr] py-10 px-0 sm:px-5"
+      class="py-10 px-0 sm:px-5"
     >
-      <h2 class="text-center row-start-1 col-span-full">
-        <Text variant="heading-2">{title}</Text>
-      </h2>
+      <div className="w-full flex justify-between">
+        <h2 class="text-center">
+          <Text variant="heading-2">{title}</Text>
+        </h2>
+
+        <div className="flex gap-0">
+          <div class="hidden relative sm:block">
+            <Button
+              variant="icon"
+              data-slide="prev"
+              aria-label="Previous item"
+            >
+              <Icon size={40} id="ChevronLeft" strokeWidth={1} />
+            </Button>
+          </div>
+          <div class="hidden relative sm:block z-10 col-start-3 row-start-3">
+            <Button variant="icon" data-slide="next" aria-label="Next item">
+              <Icon size={40} id="ChevronRight" strokeWidth={1} />
+            </Button>
+          </div>
+        </div>
+      </div>
 
       <Slider
         class="gap-6 col-span-full row-start-2 row-end-5"
@@ -44,23 +63,6 @@ function ProductShelf({
           </div>
         ))}
       </Slider>
-
-      <>
-        <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
-          <div class="absolute right-1/2 bg-interactive-inverse rounded-full border-default border">
-            <Button variant="icon" data-slide="prev" aria-label="Previous item">
-              <Icon size={20} id="ChevronLeft" strokeWidth={3} />
-            </Button>
-          </div>
-        </div>
-        <div class="hidden relative sm:block z-10 col-start-3 row-start-3">
-          <div class="absolute left-1/2 bg-interactive-inverse rounded-full border-default border">
-            <Button variant="icon" data-slide="next" aria-label="Next item">
-              <Icon size={20} id="ChevronRight" strokeWidth={3} />
-            </Button>
-          </div>
-        </div>
-      </>
 
       <SliderControllerJS rootId={id} />
     </Container>

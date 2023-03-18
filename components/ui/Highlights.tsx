@@ -8,38 +8,39 @@ export interface Highlight {
   src: LiveImage;
   alt: string;
   href: string;
-  label: string;
+  action: string;
+  title: string;
+  subtitle: string;
 }
 
 export interface Props {
   highlights?: Highlight[];
-  title: string;
 }
 
-function Highlights({ highlights = [], title }: Props) {
+function Highlights({ highlights = [] }: Props) {
   return (
-    <Container class="grid grid-cols-1 grid-rows-[48px_1fr] py-10">
-      <h2 class="text-center">
-        <Text variant="heading-2">{title}</Text>
-      </h2>
-
+    <Container class="py-10">
       <Slider
         class="gap-6"
         snap="snap-center sm:snap-start block first:ml-6 sm:first:ml-0 last:mr-6 sm:last:mr-0"
       >
-        {highlights.map(({ href, src, alt, label }) => (
+        {highlights.map(({ href, src, alt, action, title, subtitle }) => (
           <a
             href={href}
             class="flex flex-col gap-4 items-center min-w-[190px]"
           >
-            <Image
-              class="rounded-[40px]"
+            <img
+              className="w-full"
               src={src}
               alt={alt}
-              width={190}
-              height={265}
             />
-            <Text variant="body">{label}</Text>
+            <p className="font-bold">{title}</p>
+            <p className="text-xs text-center">{subtitle}</p>
+            <div className="w-full flex justify-center">
+              <div className="bg-gray-100 font-thin px-2 py-3 text-sm rounded-md uppercase">
+                {action}
+              </div>
+            </div>
           </a>
         ))}
       </Slider>
