@@ -13,8 +13,8 @@ function AddToCartButton({ skuId, sellerId }: Props) {
   });
 
   return (
-    <Button {...props} class="w-full">
-      Adicionar à Sacola
+    <Button {...props} class="w-full" style={{background: "#88b04b", textTransform: "uppercase", color: "white"}}>
+      Adicionar ao carrinho
     </Button>
   );
 }

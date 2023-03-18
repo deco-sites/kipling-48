@@ -11,6 +11,7 @@ import type { LoaderReturnType } from "$live/types.ts";
 import type { ProductDetailsPage } from "deco-sites/std/commerce/types.ts";
 
 import ProductSelector from "./ProductVariantSelector.tsx";
+import QuantitySelector from "../ui/QuantitySelector.tsx";
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
@@ -41,6 +42,7 @@ function Details({ page }: { page: ProductDetailsPage }) {
     image: images,
     name,
     gtin,
+    sku,
   } = product;
   const { price, listPrice, seller, installments } = useOffer(offers);
   const [front, back] = images ?? [];
@@ -67,20 +69,29 @@ function Details({ page }: { page: ProductDetailsPage }) {
         </div>
         {/* Product Info */}
         <div class="flex-auto px-4 sm:px-0">
-          {/* Breadcrumb */}
-          <Breadcrumb
-            itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
-          />
           {/* Code and name */}
           <div class="mt-4 sm:mt-8">
+            {/* Product name and favorite button*/}
+            <div class="flex flex-row">
+              <h1 class="w-48">
+                <Text variant="heading-3">{name}</Text>
+              </h1>
+              <Button variant="tertiary" class="w-48">
+                <Icon id="Heart" width={20} height={20} strokeWidth={2} />
+                {" "}
+              </Button>
+            </div>
+            {/* Product rating */}
             <div>
               <Text tone="subdued" variant="caption">
-                Cod. {gtin}
+                ***** 5.0/5 - 1 Opiniões
               </Text>
             </div>
-            <h1>
-              <Text variant="heading-3">{name}</Text>
-            </h1>
+            <div>
+              <Text tone="subdued" variant="caption">
+                SKU {sku}
+              </Text>
+            </div>
           </div>
           {/* Prices */}
           <div class="mt-4">
@@ -104,27 +115,31 @@ function Details({ page }: { page: ProductDetailsPage }) {
           <div class="mt-4 sm:mt-6">
             <ProductSelector product={product} />
           </div>
+
           {/* Add to Cart and Favorites button */}
           <div class="mt-4 sm:mt-10 flex flex-col gap-2">
             {seller && (
-              <AddToCartButton
-                skuId={productID}
-                sellerId={seller}
-              />
+              <div class="flex">
+                <div>
+                  <QuantitySelector quantity={1} />
+                </div>
+                <div class="ml-2">
+                  <AddToCartButton
+                    skuId={productID}
+                    sellerId={seller}
+                  />
+                </div>
+              </div>
             )}
-            <Button variant="secondary">
-              <Icon id="Heart" width={20} height={20} strokeWidth={2} />{" "}
-              Favoritar
-            </Button>
           </div>
           {/* Description card */}
           <div class="mt-4 sm:mt-6">
             <Text variant="caption">
               {description && (
-                <details>
-                  <summary class="cursor-pointer">Descrição</summary>
+                <div>
+                  <h4>Descrição</h4>
                   <div class="ml-2 mt-2">{description}</div>
-                </details>
+                </div>
               )}
             </Text>
           </div>
