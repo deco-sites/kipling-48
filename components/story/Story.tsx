@@ -93,7 +93,7 @@ function Story({ title, stories }: Props) {
 function StoryOpen(
   { storyUrl, description, productUrl, handleNext, handlePrevous, handleClose },
 ) {
-  const duration = 100000; // miliseconds
+  const duration = 10000; // miliseconds
   const [currentPercentage, setCurrentPercentage] = useState(1);
 
   function next() {
