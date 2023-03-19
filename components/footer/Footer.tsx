@@ -177,6 +177,7 @@ function Footer({ sections = [], certificates = [] }: Props) {
                           className="max-w-[200px]"
                           src={src}
                           alt={alt}
+                          height={187}
                           title={title}
                         />
                       </div>

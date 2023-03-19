@@ -21,9 +21,6 @@ function Highlights({ highlights = [] }: Props) {
   return (
     <Container class="py-10">
       <div
-        // class="gap-6"
-        // id="slider-t3"
-        // snap="snap-center sm:snap-start block first:ml-6 sm:first:ml-0 last:mr-6 sm:last:mr-0"
         className={`grid md:gap-6 grid-cols-2 md:grid-cols-${highlights.length}`}
       >
         {highlights.map(({ href, src, alt, action, title, subtitle }) => (
@@ -35,7 +32,8 @@ function Highlights({ highlights = [] }: Props) {
               className="w-full"
               src={src}
               alt={alt}
-              style={{ width: `${1336/highlights.length}px` }}
+              width={Math.ceil(1336/highlights.length)}
+              style={{ width: `${Math.ceil(1336/highlights.length)}px` }}
             />
             <p className="font-bold">{title}</p>
             <p className="text-xs text-center">{subtitle}</p>
