@@ -1337,7 +1337,7 @@ const manifest: DecoManifest = {
             "title": "Title template",
             "description":
               "add a %s whenever you want it to be replaced with the product name",
-            "default": "%s | Fashion Store",
+            "default": "%s | Kipling",
           },
           "description": {
             "type": [
