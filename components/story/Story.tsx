@@ -3,6 +3,7 @@ import Image from "deco-sites/std/components/Image.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import { useEffect, useState } from "preact/hooks";
 import { IS_BROWSER } from "https://deno.land/x/fresh@1.1.3/runtime.ts";
+import Container from "$store/components/ui/Container.tsx";
 
 export interface IStories {
   image: LiveImage;
@@ -50,9 +51,9 @@ function Story({ title, stories }: Props) {
   }
 
   return (
-    <div>
+    <Container class="mt-3">
       <div>
-        <h1 className="text-2xl font-bold ml-2">
+        <h1 className="text-2xl font-thin kipling ml-2">
           {title}
         </h1>
         <hr />
@@ -85,7 +86,7 @@ function Story({ title, stories }: Props) {
       </div>
       <br />
       <hr />
-    </div>
+    </Container>
   );
 }
 
