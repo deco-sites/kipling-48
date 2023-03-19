@@ -28,8 +28,8 @@ function Highlights({ highlights = [] }: Props) {
             href={href}
             class="flex flex-col gap-4 items-center min-w-[190px]"
           >
-            <img
-              className="w-full"
+            <Image
+              class="w-full"
               src={src}
               alt={alt}
               width={Math.ceil(1336/highlights.length)}
