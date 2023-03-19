@@ -21,6 +21,7 @@ import * as $$7 from "./islands/PageTitle.tsx";
 import * as $$8 from "./islands/ProductImages.tsx";
 import * as $$9 from "./islands/SearchControls.tsx";
 import * as $$10 from "./islands/SliderJS.tsx";
+import * as $$11 from "./islands/Story.tsx";
 import * as $$$0 from "./sections/BannerGrid.tsx";
 import * as $$$1 from "./sections/Carousel.tsx";
 import * as $$$2 from "./sections/Chooser.tsx";
@@ -36,13 +37,14 @@ import * as $$$11 from "./sections/ProductGallery.tsx";
 import * as $$$12 from "./sections/ProductShelf.tsx";
 import * as $$$13 from "./sections/SearchControls.tsx";
 import * as $$$14 from "./sections/SocialEngagement.tsx";
-import * as $$$15 from "./sections/WhatsApp.tsx";
-import * as $$$16 from "deco-sites/std/sections/SEO.tsx";
-import * as $$$17 from "deco-sites/std/sections/SEOPDP.tsx";
-import * as $$$18 from "deco-sites/std/sections/SEOPLP.tsx";
-import * as $$$19 from "deco-sites/std/sections/configOCC.global.tsx";
-import * as $$$20 from "deco-sites/std/sections/configShopify.global.tsx";
-import * as $$$21 from "deco-sites/std/sections/configVTEX.global.tsx";
+import * as $$$15 from "./sections/Story.tsx";
+import * as $$$16 from "./sections/WhatsApp.tsx";
+import * as $$$17 from "deco-sites/std/sections/SEO.tsx";
+import * as $$$18 from "deco-sites/std/sections/SEOPDP.tsx";
+import * as $$$19 from "deco-sites/std/sections/SEOPLP.tsx";
+import * as $$$20 from "deco-sites/std/sections/configOCC.global.tsx";
+import * as $$$21 from "deco-sites/std/sections/configShopify.global.tsx";
+import * as $$$22 from "deco-sites/std/sections/configVTEX.global.tsx";
 import * as $$$$0 from "$live/functions/EffectSelectPage.ts";
 import * as $$$$1 from "$live/functions/MatchDate.ts";
 import * as $$$$2 from "$live/functions/MatchEnvironment.ts";
@@ -82,6 +84,7 @@ const manifest: DecoManifest = {
     "./islands/ProductImages.tsx": $$8,
     "./islands/SearchControls.tsx": $$9,
     "./islands/SliderJS.tsx": $$10,
+    "./islands/Story.tsx": $$11,
   },
   sections: {
     "./sections/BannerGrid.tsx": $$$0,
@@ -99,13 +102,14 @@ const manifest: DecoManifest = {
     "./sections/ProductShelf.tsx": $$$12,
     "./sections/SearchControls.tsx": $$$13,
     "./sections/SocialEngagement.tsx": $$$14,
-    "./sections/WhatsApp.tsx": $$$15,
-    "deco-sites/std/sections/SEO.tsx": $$$16,
-    "deco-sites/std/sections/SEOPDP.tsx": $$$17,
-    "deco-sites/std/sections/SEOPLP.tsx": $$$18,
-    "deco-sites/std/sections/configOCC.global.tsx": $$$19,
-    "deco-sites/std/sections/configShopify.global.tsx": $$$20,
-    "deco-sites/std/sections/configVTEX.global.tsx": $$$21,
+    "./sections/Story.tsx": $$$15,
+    "./sections/WhatsApp.tsx": $$$16,
+    "deco-sites/std/sections/SEO.tsx": $$$17,
+    "deco-sites/std/sections/SEOPDP.tsx": $$$18,
+    "deco-sites/std/sections/SEOPLP.tsx": $$$19,
+    "deco-sites/std/sections/configOCC.global.tsx": $$$20,
+    "deco-sites/std/sections/configShopify.global.tsx": $$$21,
+    "deco-sites/std/sections/configVTEX.global.tsx": $$$22,
   },
   functions: {
     "$live/functions/EffectSelectPage.ts": $$$$0,
@@ -1097,6 +1101,57 @@ const manifest: DecoManifest = {
       },
       "outputSchema": null,
     },
+    "./sections/Story.tsx": {
+      "inputSchema": {
+        "title": " Story",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+          },
+          "stories": {
+            "type": "array",
+            "items": {
+              "title": "IStories",
+              "type": "object",
+              "properties": {
+                "image": {
+                  "format": "image-uri",
+                  "type": "string",
+                  "title": "Image",
+                },
+                "previewImage": {
+                  "format": "image-uri",
+                  "type": "string",
+                  "title": "Preview Image",
+                },
+                "productURL": {
+                  "type": "string",
+                  "title": "Product U R L",
+                },
+                "productName": {
+                  "type": "string",
+                  "title": "Product Name",
+                },
+              },
+              "required": [
+                "image",
+                "previewImage",
+                "productURL",
+                "productName",
+              ],
+            },
+            "title": "Stories",
+          },
+        },
+        "required": [
+          "title",
+          "stories",
+        ],
+      },
+      "outputSchema": null,
+    },
     "./sections/WhatsApp.tsx": {
       "inputSchema": {
         "title": " Whats App",
@@ -1337,7 +1392,7 @@ const manifest: DecoManifest = {
             "title": "Title template",
             "description":
               "add a %s whenever you want it to be replaced with the product name",
-            "default": "%s | Kipling",
+            "default": "%s | Fashion Store",
           },
           "description": {
             "type": [
