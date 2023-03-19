@@ -14,7 +14,7 @@ const PageTitle = () => {
   }, []);
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 hidden md:visible">
       <h1 className="text-4xl text-white font-thin capitalize">{title}</h1>
     </div>
   );

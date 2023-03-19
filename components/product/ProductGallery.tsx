@@ -57,21 +57,21 @@ function Gallery({ page }: { page: ProductListingPage }) {
 
 function TopBanner({ breadcrumb }: { breadcrumb: BreadcrumbList }) {
   return (
-    <div className="w-full h-200 bg-[#929097] px-3 py-4 h-[167px]">
+    <div className="w-full h-12 bg-[#929097] px-3 py-4 md:h-[167px]">
       <div className="text-white">
         <Breadcrumb
           itemListElement={breadcrumb?.itemListElement}
           color="#FFF"
         />
       </div>
-      <PageTitle/>
+      <PageTitle />
     </div>
   );
 }
 
-function Counter() {
+function Counter({ quantity }: { quantity: number }) {
   return (
-    <div className="h-full border-r">
+    <div className="hidden md:visible h-full border-r">
       <h4 className="font-bold px-4">84 PRODUTOS</h4>
     </div>
   );
@@ -79,7 +79,7 @@ function Counter() {
 
 function ControllerListPage({ filters }: { filters: any }) {
   return (
-    <div className="w-[380px] border border-r h-auto">
+    <div className="hidden md:visible w-[380px] border border-r h-auto">
       <div className="w-full pt-3 pb-4">
         <h4 className="px-4 font-bold">FILTRO</h4>
       </div>
@@ -102,7 +102,7 @@ function ProductGallery({ page }: Props) {
         <ControllerListPage filters={page?.filters} />
         <div>
           <div className="flex justify-between border-b items-center">
-            <Counter />
+            <Counter quantity={page?.products.length}/>
             <SearchControls page={page} />
           </div>
           <Gallery page={page} />

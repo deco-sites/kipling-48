@@ -29,16 +29,6 @@ function NavItem({ item }: { item: INavItem }) {
             class={`fixed invisible hover:visible group-hover:visible bg-default z-50 flex items-start justify-center gap-6 border-t-1 border-b-2 border-default w-screen mt-[${headerHeight}]`}
             style={{ top: "0px", left: "0px" }}
           >
-            {image?.src && (
-              <Image
-                class="p-6"
-                src={image.src}
-                alt={image.alt}
-                width={300}
-                height={332}
-                loading="lazy"
-              />
-            )}
             <ul class="flex items-start justify-center gap-6">
               {children.map((node) => (
                 <li class="p-6">
@@ -58,6 +48,17 @@ function NavItem({ item }: { item: INavItem }) {
                 </li>
               ))}
             </ul>
+
+            {image?.src && (
+              <Image
+                class="p-6"
+                src={image.src}
+                alt={image.alt}
+                width={300}
+                height={332}
+                loading="lazy"
+              />
+            )}
           </div>
         )}
     </li>

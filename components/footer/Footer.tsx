@@ -69,7 +69,7 @@ function Footer({ sections = [], certificates = [] }: Props) {
   return (
     <footer class="w-full bg-footer flex flex-col divide-y-1 divide-default">
       <div>
-        <Container class="w-full flex flex-col divide-y-1 divide-default">
+        <Container class="w-full flex flex-col divide-y-1 divide-default relative">
           <FooterContainer>
             {/* Desktop view */}
             <ul class="hidden sm:flex flex-row gap-20">
@@ -114,20 +114,40 @@ function Footer({ sections = [], certificates = [] }: Props) {
                   </div>
                 </div>
               </li>
-              <Newsletter
-                action="TESTE"
-                placeholder="E-Mail"
-                subtitle="Subtitulo"
-                title="Newsletter"
-                className="bg-stone-800"
-              />
+              <li>
+                <Newsletter
+                  action="Inscreva-se"
+                  placeholder="E-Mail"
+                  subtitle="Assine para receber novidades e ofertas exclusivas!"
+                  title="Vamos manter contato?"
+                  className="absolute top-0 right-0 w-[33%] max-w-[380px] h-full text-white"
+                  backgroundColor="#46454A"
+                />
+              </li>
             </ul>
 
             {/* Mobile view */}
             <ul class="flex flex-col sm:hidden sm:flex-row gap-4">
+              <li>
+                <Text variant="body" tone="default">
+                  <details>
+                    <summary>
+                      SAC
+                    </summary>
+
+                    <ul
+                      class={`flex ${"flex-row"} gap-2 px-2 pt-2`}
+                    >
+                      <li>
+                        <SectionItem item={{ label: 'Telefone 0800 0000 0000', href: 'callto:+55800 0000 0000' }} />
+                      </li>
+                    </ul>
+                  </details>
+                </Text>
+              </li>
               {sections.map((section) => (
                 <li>
-                  <Text variant="body" tone="default-inverse">
+                  <Text variant="body" tone="default">
                     <details>
                       <summary>
                         {section.label}
@@ -148,6 +168,32 @@ function Footer({ sections = [], certificates = [] }: Props) {
                   </Text>
                 </li>
               ))}
+              <li>
+                <div>
+                  <div className="grid grid-cols-2 gap-4">
+                    {certificates.map(({ src, alt, title, cols = 1 }) => (
+                      <div className={`col-span-${cols}`} title={title}>
+                        <img
+                          className="max-w-[200px]"
+                          src={src}
+                          alt={alt}
+                          title={title}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </li>
+              <li>
+                <Newsletter
+                  action="Inscreva-se"
+                  placeholder="E-Mail"
+                  subtitle="Assine para receber novidades e ofertas exclusivas!"
+                  title="Vamos manter contato?"
+                  className="w-full text-white absolute left-0"
+                  backgroundColor="#46454A"
+                />
+              </li>
             </ul>
           </FooterContainer>
         </Container>

@@ -54,7 +54,7 @@ function ProductShelf({
       </div>
 
       <Slider
-        class="gap-6 col-span-full row-start-2 row-end-5 overflow-hidden"
+        class="gap-6 col-span-full row-start-2 row-end-5 overflow-hidden overflow-x-hidden"
         snap="snap-center sm:snap-start block first:ml-6 sm:first:ml-0 last:mr-6 sm:last:mr-0"
       >
         {products?.map((product) => (

@@ -40,7 +40,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
   } = image;
 
   return (
-    <div class="relative h-[498px] min-w-[100vw] overflow-y-hidden">
+    <div class="relative md:h-[498px] min-w-[100vw] overflow-y-hidden">
       <a href={href ?? "#"} aria-label={alt}>
         <Picture class="w-full" preload={lcp}>
           <Source
@@ -48,7 +48,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
             fetchPriority={lcp ? "high" : "auto"}
             src={mobile}
             width={360}
-            height={600}
+            height={360}
           />
           <Source
             media="(min-width: 768px)"

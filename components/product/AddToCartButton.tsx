@@ -4,9 +4,10 @@ import { useAddToCart } from "$store/sdk/useAddToCart.ts";
 interface Props {
   skuId: string;
   sellerId: string;
+  classList?: string
 }
 
-function AddToCartButton({ skuId, sellerId }: Props) {
+function AddToCartButton({ skuId, sellerId, classList }: Props) {
   const props = useAddToCart({
     skuId,
     sellerId,
@@ -15,7 +16,7 @@ function AddToCartButton({ skuId, sellerId }: Props) {
   return (
     <Button
       {...props}
-      class="w-full"
+      class={`rounded-none w-fit ${classList}`}
       style={{
         background: "#88b04b",
         textTransform: "uppercase",

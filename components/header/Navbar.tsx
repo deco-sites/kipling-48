@@ -1,7 +1,7 @@
 import HeaderButton from "$store/islands/HeaderButton.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import Button from "$store/components/ui/Button.tsx";
-import HeaderChanger from "$store/components/ui/headerChanger.tsx"
+import HeaderChanger from "$store/components/ui/headerChanger.tsx";
 import NavItem from "./NavItem.tsx";
 import { navbarHeight } from "./constants.ts";
 import type { INavItem } from "./NavItem.tsx";
@@ -14,60 +14,67 @@ function Navbar({ items, searchbar }: {
   items: INavItem[];
   searchbar: SearchbarProps;
 }) {
-
   return (
     <>
-      <HeaderChanger/>
+      <HeaderChanger />
       {/* Mobile Version */}
       <div
         class={`md:hidden flex flex-row justify-between items-center h-[${navbarHeight}] border-b-1 border-default w-full px-2 gap-2`}
         id="header-page"
       >
-        <HeaderButton variant="menu" />
+        <div className="flex">
+          <HeaderButton variant="menu" />
+          <div className="border-l">
+            <HeaderButton variant="search" />
+          </div>
+        </div>
 
         <a
           href="/"
-          class={`flex-grow inline-flex items-center min-h-[${navbarHeight}]`}
+          class={`flex-grow inline-flex items-center justify-center min-h-[${navbarHeight}]`}
           aria-label="Store logo"
         >
-          <Icon id="Logo" width={126} height={16} />
+          <img
+            src="https://kipling.vteximg.com.br/arquivos/kipling-mobile.png"
+            alt="store logo image"
+            className="max-w-[128px] mr-7"
+          />
         </a>
 
         <div class="flex gap-1">
-          <HeaderButton variant="search" />
           <HeaderButton variant="cart" />
         </div>
       </div>
 
       {/* Desktop Version */}
-      <div className="flex justify-center">
+      <div className="hidden md:flex justify-center">
         <div class="">
-            <a
-              href="/"
-              aria-label="Store logo"
-              id="logo-header-open"
-              class="block py-1 py-3 w-[176px]"
-            >
-              <img
-                src="https://www.kipling.com.br/arquivos/kipling.png?v=636866750618500000"
-                alt="store logo image"
-              />
-            </a>
+          <a
+            href="/"
+            aria-label="Store logo"
+            id="logo-header-open"
+            class="block py-1 py-3 w-[176px]"
+          >
+            <img
+              src="https://www.kipling.com.br/arquivos/kipling.png?v=636866750618500000"
+              alt="store logo image"
+            />
+          </a>
         </div>
       </div>
       <div class="hidden md:flex flex-row justify-between items-center border-b-1 border-default w-full pl-2 pr-3">
         <div class="flex-none w-44">
-            <a
-              href="/"
-              aria-label="Store logo"
-              id="logo-header-close"
-              class="block py-1 py-3 w-[176px] hidden"
-            >
-              <img
-                src="https://www.kipling.com.br/arquivos/kipling.png?v=636866750618500000"
-                alt="store logo image"
-              />
-            </a>
+          <a
+            href="/"
+            aria-label="Store logo"
+            id="logo-header-close"
+            class="block py-1 py-3 w-[176px] hidden"
+          >
+            <img
+              src="https://www.kipling.com.br/arquivos/kipling.png?v=636866750618500000"
+              alt="store logo image"
+            />
+          </a>
         </div>
         <div class="flex-auto flex justify-center">
           {items.map((item) => <NavItem item={item} />)}

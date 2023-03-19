@@ -21,8 +21,8 @@ function Controls({ page }: { page: ProductListingPage }) {
   const filters = page?.filters;
 
   return (
-    <Container class="flex flex-col justify-end mb-4 md:mb-0 p-4 md:p-0 sm:gap-4 sm:flex-row sm:h-[53px] md:border-b-1">
-      <div class="flex flex-row sm:gap-4 items-center justify-between md:justify-end border-b-1 border-default md:border-none">
+    <Container class="fixed bottom-0 left-0 w-full bg-footer md:relative z-[999] flex flex-col justify-end md:mb-4 p-4 md:p-0 sm:gap-4 sm:flex-row sm:h-[53px]">
+      <div class="flex flex-row sm:gap-4 items-center justify-between md:justify-end">
         <div className="md:hidden">
           <Button
             variant="tertiary"

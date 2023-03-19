@@ -1,0 +1,1 @@
+export { default } from '$store/components/chooser/Chooser.tsx'
