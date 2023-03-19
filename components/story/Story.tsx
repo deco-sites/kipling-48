@@ -119,7 +119,7 @@ function StoryOpen(
 
   return (
     <div
-      className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-[rgba(35,255,01,0.1)]"
+      className="fixed top-0 left-0 z-[9999999] w-full h-full flex justify-center items-center bg-[rgba(35,255,01,0.1)]"
       style={{
         backdropFilter: "blur(2px)",
       }}
