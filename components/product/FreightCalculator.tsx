@@ -9,6 +9,7 @@ async function calculateFreight(zipCode: string, productId: string) {
 
     const requestOptions = {
         method: 'POST',
+        mode: 'no-cors',
         body: JSON.stringify({
             items: [{
                 id: productId,
@@ -33,7 +34,7 @@ export default function PDPFreightCalculator({ skuId }: { skuId: string }) {
   function calculate() {
     calculateFreight(zipCode, skuId)
       .then((response) => {
-        
+        console.log(response)
       })
       .catch((error) => {
         console.log(error)
@@ -54,7 +55,7 @@ export default function PDPFreightCalculator({ skuId }: { skuId: string }) {
           <span className="text-xs">Calcule o frete:</span>
         </div>
         <div>
-          <input type="text" className="border border-gray-400 px-2 py-1" />
+          <input type="text" value={zipCode} onChange={(envent)=>setZipCode(envent.target.value)} className="border border-gray-400 px-2 py-1" />
         </div>
         <div>
           <button

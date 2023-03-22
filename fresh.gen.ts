@@ -12,16 +12,17 @@ import * as $3 from "./routes/api/[...catchall].tsx";
 import * as $4 from "./routes/index.tsx";
 import * as $$0 from "./islands/AddToCartButton.tsx";
 import * as $$1 from "./islands/Chooser.tsx";
-import * as $$2 from "./islands/HeaderButton.tsx";
-import * as $$3 from "./islands/HeaderChanger.tsx";
-import * as $$4 from "./islands/HeaderModals.tsx";
-import * as $$5 from "./islands/HeaderSearchMenu.tsx";
-import * as $$6 from "./islands/Newsletter.tsx";
-import * as $$7 from "./islands/PageTitle.tsx";
-import * as $$8 from "./islands/ProductImages.tsx";
-import * as $$9 from "./islands/SearchControls.tsx";
-import * as $$10 from "./islands/SliderJS.tsx";
-import * as $$11 from "./islands/Story.tsx";
+import * as $$2 from "./islands/FreightCalculator.tsx";
+import * as $$3 from "./islands/HeaderButton.tsx";
+import * as $$4 from "./islands/HeaderChanger.tsx";
+import * as $$5 from "./islands/HeaderModals.tsx";
+import * as $$6 from "./islands/HeaderSearchMenu.tsx";
+import * as $$7 from "./islands/Newsletter.tsx";
+import * as $$8 from "./islands/PageTitle.tsx";
+import * as $$9 from "./islands/ProductImages.tsx";
+import * as $$10 from "./islands/SearchControls.tsx";
+import * as $$11 from "./islands/SliderJS.tsx";
+import * as $$12 from "./islands/Story.tsx";
 import * as $$$0 from "./sections/BannerGrid.tsx";
 import * as $$$1 from "./sections/Carousel.tsx";
 import * as $$$2 from "./sections/Chooser.tsx";
@@ -75,16 +76,17 @@ const manifest: DecoManifest = {
   islands: {
     "./islands/AddToCartButton.tsx": $$0,
     "./islands/Chooser.tsx": $$1,
-    "./islands/HeaderButton.tsx": $$2,
-    "./islands/HeaderChanger.tsx": $$3,
-    "./islands/HeaderModals.tsx": $$4,
-    "./islands/HeaderSearchMenu.tsx": $$5,
-    "./islands/Newsletter.tsx": $$6,
-    "./islands/PageTitle.tsx": $$7,
-    "./islands/ProductImages.tsx": $$8,
-    "./islands/SearchControls.tsx": $$9,
-    "./islands/SliderJS.tsx": $$10,
-    "./islands/Story.tsx": $$11,
+    "./islands/FreightCalculator.tsx": $$2,
+    "./islands/HeaderButton.tsx": $$3,
+    "./islands/HeaderChanger.tsx": $$4,
+    "./islands/HeaderModals.tsx": $$5,
+    "./islands/HeaderSearchMenu.tsx": $$6,
+    "./islands/Newsletter.tsx": $$7,
+    "./islands/PageTitle.tsx": $$8,
+    "./islands/ProductImages.tsx": $$9,
+    "./islands/SearchControls.tsx": $$10,
+    "./islands/SliderJS.tsx": $$11,
+    "./islands/Story.tsx": $$12,
   },
   sections: {
     "./sections/BannerGrid.tsx": $$$0,

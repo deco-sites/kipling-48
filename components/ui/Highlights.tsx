@@ -26,7 +26,7 @@ function Highlights({ highlights = [] }: Props) {
         {highlights.map(({ href, src, alt, action, title, subtitle }) => (
           <a
             href={href}
-            class="flex flex-col gap-4 items-center min-w-[190px]"
+            class="flex flex-col gap-4 items-center min-w-[190px] bg-yellow-700"
           >
             <Image
               class="w-full"
